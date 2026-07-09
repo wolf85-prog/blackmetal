@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MORTIFER LIVE - Pink Pony Black Metal Concert</title>
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            overflow-x: hidden;
+            background: #1a1a2e;
+        }
+
+        /* BLOCK 1 - HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffb6d9 50%, #ffd4e8 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Rainbow Background */
+        .rainbow {
+            position: absolute;
+            width: 120%;
+            height: 600px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 182, 193, 0.3) 20%,
+                rgba(255, 255, 150, 0.3) 30%,
+                rgba(150, 255, 150, 0.3) 40%,
+                rgba(150, 200, 255, 0.3) 50%,
+                rgba(200, 150, 255, 0.3) 60%,
+                rgba(255, 150, 200, 0.3) 70%,
+                transparent 80%
+            );
+            border-radius: 50%;
+            top: -200px;
+            left: -10%;
+            z-index: 1;
+        }
+
+        /* Floating Elements */
+        .floating-hearts, .floating-stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            color: #ff69b4;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .star {
+            position: absolute;
+            font-size: 25px;
+            color: #ffd700;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Main Title */
+        .main-title {
+            font-family: 'Metal Mania', cursive;
+            font-size: 120px;
+            color: #000;
+            text-shadow: 
+                3px 3px 0 #ff69b4,
+                -3px -3px 0 #ff69b4,
+                3px -3px 0 #ff69b4,
+                -3px 3px 0 #ff69b4,
+                0 0 30px rgba(255, 105, 180, 0.8);
+            letter-spacing: 8px;
+            z-index: 10;
+            text-align: center;
+            line-height: 1;
+            margin-bottom: 40px;
+            animation: glitter 2s infinite;
+        }
+
+        @keyframes glitter {
+            0%, 100% { text-shadow: 3px 3px 0 #ff69b4, -3px -3px 0 #ff69b4, 3px -3px 0 #ff69b4, -3px 3px 0 #ff69b4, 0 0 30px rgba(255, 105, 180, 0.8); }
+            50% { text-shadow: 3px 3px 0 #ff1493, -3px -3px 0 #ff1493, 3px -3px 0 #ff1493, -3px 3px 0 #ff1493, 0 0 50px rgba(255, 20, 147, 1); }
+        }
+
+        /* Unicorns Container */
+        .unicorns-container {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            z-index: 10;
+            margin-bottom: 40px;
+        }
+
+        .unicorn {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #ffb6d9 0%, #ff69b4 100%);
+            border-radius: 50% 50% 45% 45%;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.4);
+            border: 4px solid #ff1493;
+        }
+
+        .unicorn::before {
+            content: '🦄';
+            font-size: 120px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.6));
+        }
+
+        .spiked-collar {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 30px;
+            background: #2d2d2d;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 10px;
+        }
+
+        .spike {
+            width: 8px;
+            height: 15px;
+            background: #c0c0c0;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+
+        /* Cloud Platform */
+        .cloud-platform {
+            width: 700px;
+            height: 150px;
+            background: linear-gradient(180deg, #ffb6d9 0%, #ff69b4 100%);
+            border-radius: 100px;
+            position: relative;
+            z-index: 5;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cloud-platform::before,
+        .cloud-platform::after {
+            content: '';
+            position: absolute;
+            background: linear-gradient(180deg, #ffb6d9 0%, #ff69b4 100%);
+            border-radius: 50%;
+        }
+
+        .cloud-platform::before {
+            width: 200px;
+            height: 120px;
+            left: 50px;
+            top: -40px;
+        }
+
+        .cloud-platform::after {
+            width: 180px;
+            height: 100px;
+            right: 60px;
+            top: -30px;
+        }
+
+        /* Event Info */
+        .event-info {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px 50px;
+            border-radius: 50px;
+            font-family: 'Metal Mania', cursive;
+            font-size: 28px;
+            color: #ff1493;
+            text-shadow: 2px 2px 0 #fff;
+            z-index: 10;
+            letter-spacing: 3px;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.3);
+        }
+
+        .event-info span {
+            margin: 0 15px;
+        }
+
+        /* BLOCK 2 - FEATURES */
+        .features {
+            min-height: 100vh;
+            background: linear-gradient(180deg, #2d1b4e 0%, #1a1a2e 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+        }
+
+        /* Stage Curtains */
+        .curtain {
+            position: absolute;
+            width: 300px;
+            height: 100%;
+            background: linear-gradient(90deg, #ff69b4 0%, #ffb6d9 50%, #ff69b4 100%);
+            top: 0;
+            z-index: 1;
+            box-shadow: inset -20px 0 40px rgba(0,0,0,0.3);
+        }
+
+        .curtain-left {
+            left: 0;
+            clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+        }
+
+        .curtain-right {
+            right: 0;
+            clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .curtain-fold {
+            position: absolute;
+            width: 50px;
+            height: 100%;
+            background: rgba(255, 182, 217, 0.3);
+        }
+
+        /* Stage */
+        .stage {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .stage-lights {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .light {
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, #fff 0%, #ff69b4 40%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 1.5s ease-in-out infinite;
+            box-shadow: 0 0 40px 20px rgba(255, 105, 180, 0.6);
+        }
+
+        .light:nth-child(2) { animation-delay: 0.3s; background: radial-gradient(circle, #fff 0%, #00ffff 40%, transparent 70%); box-shadow: 0 0 40px 20px rgba(0, 255, 255, 0.6); }
+        .light:nth-child(3) { animation-delay: 0.6s; background: radial-gradient(circle, #fff 0%, #ffff00 40%, transparent 70%); box-shadow: 0 0 40px 20px rgba(255, 255, 0, 0.6); }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .performer {
+            width: 300px;
+            height: 350px;
+            margin: 0 auto 40px;
+            background: linear-gradient(135deg, #ffb6d9 0%, #ff69b4 100%);
+            border-radius: 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 200px;
+            box-shadow: 0 20px 80px rgba(255, 105, 180, 0.5);
+            border: 5px solid #ff1493;
+        }
+
+        .guitar {
+            position: absolute;
+            font-size: 150px;
+            right: -50px;
+            top: 100px;
+            transform: rotate(-30deg);
+            filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.5));
+        }
+
+        .smoke {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            height: 100px;
+            background: radial-gradient(ellipse, rgba(255, 182, 217, 0.6) 0%, transparent 70%);
+            filter: blur(20px);
+            animation: smokeMove 4s ease-in-out infinite;
+        }
+
+        @keyframes smokeMove {
+            0%, 100% { transform: translateX(-50%) scaleX(1); }
+            50% { transform: translateX(-50%) scaleX(1.2); }
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .feature-box {
+            background: linear-gradient(135deg, rgba(255, 105, 180, 0.2) 0%, rgba(255, 182, 217, 0.2) 100%);
+            border: 3px solid #ff69b4;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+
+        .feature-box h3 {
+            font-family: 'Metal Mania', cursive;
+            font-size: 32px;
+            color: #fff;
+            text-shadow: 3px 3px 0 #ff1493, -3px -3px 0 #ff1493;
+            letter-spacing: 2px;
+        }
+
+        /* Audience */
+        .audience {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            z-index: 5;
+        }
+
+        .audience-pony {
+            font-size: 50px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .audience-pony:nth-child(2) { animation-delay: 0.2s; }
+        .audience-pony:nth-child(3) { animation-delay: 0.4s; }
+        .audience-pony:nth-child(4) { animation-delay: 0.6s; }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .glow-stick {
+            position: absolute;
+            width: 8px;
+            height: 40px;
+            background: #00ff00;
+            border-radius: 4px;
+            box-shadow: 0 0 20px #00ff00;
+        }
+
+        /* BLOCK 3 - TICKETS */
+        .tickets {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 50%, #1a1a2e 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+        }
+
+        /* Spider Web Background */
+        .spider-web {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: 
+                repeating-conic-gradient(
+                    from 0deg at 50% 50%,
+                    transparent 0deg,
+                    rgba(255, 105, 180, 0.1) 1deg,
+                    transparent 3deg
+                );
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        .web-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 50% 50%, transparent 50%, rgba(255, 105, 180, 0.2) 51%),
+                repeating-linear-gradient(0deg, transparent, transparent 49px, rgba(255, 105, 180, 0.2) 50px);
+        }
+
+        .tickets-container {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            z-index: 10;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Ticket Booth */
+        .ticket-booth {
+            width: 300px;
+            height: 350px;
+            background: linear-gradient(135deg, #ffb6d9 0%, #ff69b4 100%);
+            border-radius: 30px;
+            position: relative;
+            box-shadow: 0 20px 80px rgba(255, 105, 180, 0.5);
+            border: 5px solid #ff1493;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .booth-window {
+            width: 150px;
+            height: 150px;
+            background: #fff;
+            border-radius: 50%;
+            border: 8px solid #ffd700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 100px;
+            margin-bottom: 20px;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.1);
+        }
+
+        .golden-tickets {
+            position: absolute;
+            right: -40px;
+            top: 50%;
+            transform: translateY(-50%) rotate(15deg);
+            font-size: 80px;
+            filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.3));
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { filter: brightness(1) drop-shadow(5px 5px 10px rgba(0,0,0,0.3)); }
+            50% { filter: brightness(1.3) drop-shadow(10px 10px 20px rgba(255, 215, 0, 0.6)); }
+        }
+
+        /* Ticket Cards */
+        .ticket-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .ticket-card {
+            background: linear-gradient(135deg, #ffb6d9 0%, #ff69b4 100%);
+            border-radius: 15px;
+            padding: 25px 40px;
+            min-width: 280px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.4);
+            border: 3px dashed #fff;
+            transform: rotate(-2deg);
+            transition: transform 0.3s;
+        }
+
+        .ticket-card:nth-child(2) { transform: rotate(2deg); }
+        .ticket-card:nth-child(3) { transform: rotate(-1deg); }
+
+        .ticket-card:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .ticket-card h3 {
+            font-family: 'Metal Mania', cursive;
+            font-size: 28px;
+            color: #000;
+            margin-bottom: 10px;
+        }
+
+        .ticket-card .price {
+            font-family: 'Metal Mania', cursive;
+            font-size: 42px;
+            color: #ff1493;
+            text-shadow: 2px 2px 0 #fff;
+        }
+
+        /* Location */
+        .location {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 20px;
+            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.3);
+        }
+
+        .location h4 {
+            font-family: 'Metal Mania', cursive;
+            font-size: 24px;
+            color: #ff1493;
+            margin-bottom: 5px;
+        }
+
+        .location p {
+            color: #666;
+            font-weight: 700;
+        }
+
+        .heart-icon {
+            font-size: 40px;
+            margin: 10px 0;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 25px 80px;
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+            border: none;
+            border-radius: 50px;
+            font-family: 'Metal Mania', cursive;
+            font-size: 36px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            cursor: pointer;
+            box-shadow: 
+                0 10px 40px rgba(255, 105, 180, 0.6),
+                inset 0 0 20px rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 60px rgba(255, 105, 180, 0.8);
+        }
+
+        /* Floating decorative elements */
+        .sparkle {
+            position: absolute;
+            font-size: 20px;
+            color: #fff;
+            animation: sparkleAnim 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkleAnim {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-title { font-size: 60px; }
+            .unicorn { width: 120px; height: 120px; }
+            .unicorn::before { font-size: 80px; }
+            .cloud-platform { width: 90%; }
+            .features-grid { grid-template-columns: 1fr; }
+            .ticket-cards { width: 100%; }
+            .curtain { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- BLOCK 1: HERO SECTION -->
+    <section class="hero">
+        <div class="rainbow"></div>
+        
+        <div class="floating-hearts">
+            <div class="heart" style="top: 10%; left: 10%;">💖</div>
+            <div class="heart" style="top: 20%; right: 15%; animation-delay: 1s;"></div>
+            <div class="heart" style="top: 60%; left: 5%; animation-delay: 2s;">💕</div>
+            <div class="heart" style="bottom: 20%; right: 10%; animation-delay: 3s;">💖</div>
+        </div>
+
+        <div class="floating-stars">
+            <div class="star" style="top: 15%; left: 20%;">⭐</div>
+            <div class="star" style="top: 25%; right: 25%; animation-delay: 0.5s;">✨</div>
+            <div class="star" style="bottom: 30%; left: 15%; animation-delay: 1s;">⭐</div>
+            <div class="star" style="top: 50%; right: 10%; animation-delay: 1.5s;">✨</div>
+        </div>
+
+        <h1 class="main-title">MORTIFER LIVE</h1>
+
+        <div class="unicorns-container">
+            <div class="unicorn">
+                <div class="spiked-collar">
+                    <div class="spike"></div>
+                    <div class="spike"></div>
+                    <div class="spike"></div>
+                    <div class="spike"></div>
+                    <div class="spike"></div>
+                </div>
+            </div>
+            <div class="unicorn">
+                <div class="spiked-collar">
+                    <div class="spike"></div>
+                    <div class="spike"></div>
+                    <div class="spike"></div>
+                    <div class="spike"></div>
+                    <div class="spike"></div>
+                </div>
+            </div>
+            <div class="unicorn">
+                <div class="spiked-collar">
+                    <div class="spike"></div>
+                    <div class="spike"></div>
+                    <div class="spike"></div>
+                    <div class="spike"></div>
+                    <div class="spike"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cloud-platform"></div>
+
+        <div class="event-info">
+            <span>13 DECEMBER</span> • <span>MOSCOW</span> • <span>CLUB DARK PASTURE</span>
+        </div>
+    </section>
+
+    <!-- BLOCK 2: FEATURES -->
+    <section class="features">
+        <div class="curtain curtain-left">
+            <div class="curtain-fold" style="left: 20px;"></div>
+            <div class="curtain-fold" style="left: 60px;"></div>
+            <div class="curtain-fold" style="left: 100px;"></div>
+        </div>
+        <div class="curtain curtain-right">
+            <div class="curtain-fold" style="right: 20px;"></div>
+            <div class="curtain-fold" style="right: 60px;"></div>
+            <div class="curtain-fold" style="right: 100px;"></div>
+        </div>
+
+        <div class="stage">
+            <div class="stage-lights">
+                <div class="light"></div>
+                <div class="light"></div>
+                <div class="light"></div>
+                <div class="light"></div>
+                <div class="light"></div>
+            </div>
+
+            <div class="performer">
+                🦄
+                <div class="guitar">🎸</div>
+            </div>
+
+            <div class="smoke"></div>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-box">
+                <h3>BRUTAL SOUND</h3>
+            </div>
+            <div class="feature-box">
+                <h3>PYRO SHOW</h3>
+            </div>
+            <div class="feature-box">
+                <h3>MERCH ZONE</h3>
+            </div>
+            <div class="feature-box">
+                <h3>2+ HOURS OF DARKNESS</h3>
+            </div>
+        </div>
+
+        <div class="audience">
+            <div class="audience-pony">🦄</div>
+            <div class="audience-pony"></div>
+            <div class="audience-pony">🦄</div>
+            <div class="audience-pony">🐴</div>
+            <div class="audience-pony">🦄</div>
+        </div>
+    </section>
+
+    <!-- BLOCK 3: TICKETS -->
+    <section class="tickets">
+        <div class="spider-web"></div>
+        <div class="web-lines"></div>
+
+        <!-- Decorative sparkles -->
+        <div class="sparkle" style="top: 10%; left: 10%;">✨</div>
+        <div class="sparkle" style="top: 20%; right: 15%;">⭐</div>
+        <div class="sparkle" style="bottom: 20%; left: 20%;">✨</div>
+        <div class="sparkle" style="bottom: 15%; right: 10%;">⭐</div>
+
+        <div class="tickets-container">
+            <div class="ticket-booth">
+                <div class="booth-window">🦄</div>
+                <div style="font-family: 'Metal Mania'; font-size: 24px; color: #fff; text-shadow: 2px 2px 0 #ff1493;">TICKETS</div>
+                <div class="golden-tickets">🎫🎫🎫</div>
+            </div>
+
+            <div class="ticket-cards">
+                <div class="ticket-card">
+                    <h3>STANDING</h3>
+                    <div class="price">2500₽</div>
+                </div>
+                <div class="ticket-card">
+                    <h3>VIP TABLE</h3>
+                    <div class="price">5000₽</div>
+                </div>
+                <div class="ticket-card">
+                    <h3>MEET&GREET</h3>
+                    <div class="price">9000₽</div>
+                </div>
+
+                <div class="location">
+                    <div class="heart-icon">💖</div>
+                    <h4>CLUB DARK PASTURE</h4>
+                    <p>Moscow</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="#" class="cta-button">BUY TICKETS</a>
+    </section>
+</body>
+</html>
